@@ -71,9 +71,8 @@ PrimaryKey = "8a2dAo9Cgv9IXVuXF4QXGBlf079zHXqJeha5UHsVm18y9wxSmNs3N2cpSW8M4pLEa7
 CosmosDatabase = "carton-visualization" 
 CosmosCollection = "ManualVisualizationResponse" 
  
-# query = "SELECT * FROM c WHERE (TimestampToDateTime(c._ts*1000) >= '2021-06-01T00:00:00.0000000Z' AND TimestampToDateTime(c._ts*1000) < '2021-07-05T00:00:00.0000000Z')"
+
 query = "SELECT * FROM c WHERE (TimestampToDateTime(c._ts*1000) >= DateTimeAdd('hh', -26, GetCurrentDateTime()) AND TimestampToDateTime(c._ts*1000) < DateTimeAdd('hh', -2, GetCurrentDateTime()))" 
-# 13:30 IST = 08:00 UTC
 
 readConfig = { "Endpoint": URI, 
               "Masterkey": PrimaryKey, 
@@ -103,7 +102,6 @@ manualVisRespDF = manualVisRespDF.withColumn('DateTime', from_utc_timestamp(from
 
 from delta.tables import*
 
-# manualVisRespDF.write.format("delta").option("mergeSchema", "True").save("/mnt/transient/ManualVisualizationResponse")
 # upserts
 deltaTable = DeltaTable.forPath(spark, "/mnt/transient/ManualVisualizationResponse")
 deltaTable.alias("manVisResTable").merge(
