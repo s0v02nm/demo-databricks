@@ -3,6 +3,8 @@
 
 # COMMAND ----------
 
+# setting up
+
 # mounting storage account 
 
 #Application (Client) ID 
@@ -64,7 +66,8 @@ schema = StructType.fromJson(json.loads(schema_json))
 
 # COMMAND ----------
 
-URI = "https://dev-atlas-cartonization-cosmosdb.documents.azure.com:443/" 
+URI = "stg-cosmos-db"
+# "https://dev-atlas-cartonization-cosmosdb.documents.azure.com:443/" 
 PrimaryKey = "8a2dAo9Cgv9IXVuXF4QXGBlf079zHXqJeha5UHsVm18y9wxSmNs3N2cpSW8M4pLEa7WSYhlnFbQ3hMEGIUFS0Q==" 
 CosmosDatabase = "carton-visualization" 
 CosmosCollection = "ManualVisualizationResponse" 
