@@ -3,7 +3,6 @@
 
 # COMMAND ----------
 
-# mounting storage account 
 
 #Application (Client) ID 
 applicationId = dbutils.secrets.get(scope="cartonizationStorageaccScope",key="devcartonizationstrgacc-client-id") 
